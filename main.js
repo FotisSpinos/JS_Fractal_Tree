@@ -36,7 +36,7 @@ function init()
     inputFieldAngle.setAttribute("type", "text");
     document.body.appendChild(inputFieldAngle);
 
-    inputFieldAngle.defaultValue = 10;
+    inputFieldAngle.defaultValue = 20;
 
     // create input box text for fractal angle
     let sizeText = document.createTextNode("\t Size Coefficient \t");
@@ -58,7 +58,7 @@ function updateInput()
     //alert("Update occured");
     if(fractalTree != null)
         fractalTree.active = false;
-        
+
     generateTree();
 }
 
