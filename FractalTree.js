@@ -6,6 +6,7 @@ class FractalTree
         this.angleOffset = angleOffset;
         this.sizeCoefficient = sizeCoefficient;
         this.sizeLimit = sizeLimit;
+        this.active = true;
     }
 
     draw()
@@ -15,12 +16,17 @@ class FractalTree
 
     rootDraw(currentBranch)
     {
+        setTimeout(() => {
+
+        if(this.active == false)
+            return;
+
         if(currentBranch.size < this.sizeLimit)
         {
             return currentBranch;
         }
 
-        //Draw branch
+        // Draw branch
         currentBranch.draw();
 
         // Create left branch
@@ -38,5 +44,6 @@ class FractalTree
                 currentBranch.yDest, 
                 currentBranch.size * this.sizeCoefficient, 
                 currentBranch.angle - this.angleOffset));
+        }, 0.0)
     }
 }

@@ -1,6 +1,3 @@
-const xForward = 0;
-const yForward = 1;
-
 class Branch
 {
     constructor(xPos, yPos, size, angle)

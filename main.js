@@ -50,10 +50,16 @@ function init()
     inputFieldSize.defaultValue = 0.65;
 }
 
+let fractalTree;
+
 function updateInput()
 {
-    // Generate tree when the browser is ready to render
-    requestAnimationFrame(generateTree);
+    
+    //alert("Update occured");
+    if(fractalTree != null)
+        fractalTree.active = false;
+        
+    generateTree();
 }
 
 function generateTree()
@@ -67,23 +73,13 @@ function generateTree()
     let angleOffset = parseFloat(inputFieldAngle.value);
     let sizeCoefficient = parseFloat(inputFieldSize.value);
 
-    //handle special cases for the angle offset
-    if(angleOffset < 0)
-        angleOffset = -angleOffset;
-    else if(angleOffset == 0)
-        angleOffset = 1;
-
-    //handle special cases for the size coefficient
-    if(sizeCoefficient > 0.7)
-        sizeCoefficient = 0.7;
-    else if(sizeCoefficient <= 0)
-        sizeCoefficient = 0.1;
-
     //Creates the fractal tree object
-    let fractalTree = new FractalTree(root, angleOffset, sizeCoefficient, 0.1);
+    fractalTree = new FractalTree(root, angleOffset, sizeCoefficient, 0.1);
 
     //Draw the fractal tree
     fractalTree.draw();
+
+    //alert("Update fractal");
 }
 
 //Add Event listener
